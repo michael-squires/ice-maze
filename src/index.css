@@ -11,8 +11,8 @@
 
   --cols:10;
   --rows:18;
-  --tile-size: 20px;
---border-width: 5px;
+  --tile-size: calc(300px / var(--cols));
+--border-width: 2px;
 }
 
 .color-0 {
@@ -32,4 +32,15 @@
   border-top-color: var(--border-top-color);
   border-right-color: var(--border-right-color);
   border-bottom-color: var(--border-bottom-color);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.grid-board {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--tile-size));
+  grid-gap: 0;
+  align-self: flex-start;
 }

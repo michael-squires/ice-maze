@@ -1,5 +1,5 @@
 import './App.css';
-import GridSquare from './components/GridSquare';
+import Maze from './components/Maze';
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <h1 className="App-title">Ice Maze</h1>
       </header>
-      <GridSquare color='1' />
+      <Maze />
     </div >
   );
 }
