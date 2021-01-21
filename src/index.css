@@ -1,3 +1,10 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 :root {
   --bg-color:rga(150,150,150,1);
 
@@ -6,8 +13,9 @@
   --border-right-color: rgba(0, 0, 0, 0.15);
   --border-bottom-color: rgba(0, 0, 0, 0.5);
 
-  --color-o: #000000;
+  --color-o: #160f01;
   --color-s: #d7fffe;
+  --color-x: #d69214;
   --color-S: green;
   --color-E: red;
 
@@ -16,22 +24,40 @@
   --button-color-b: rgba(120, 120, 120, 1);
   --button-color-l: rgba(222, 222, 222, 1);
 
-  --cols:10;
+  --cols:6;
   --rows:18;
-  --tile-size: 30px;
-  /* calc(300px / var(Math.max(--cols,--rows))); */
+  --tile-size: calc(360px / calc(var(--cols)+2));
   --border-width: 3px;
 }
 
 .type-s {
-  background-color: var(--color-s);
-  border-width: 0px
+  background: repeating-linear-gradient(
+    45deg,
+    #d7fffe,
+    #d7fffe 5%,
+    #d8e2e2 5%,
+    #9ecac9 10%
+  );
+  border-width: 0px;
 }
 
 .type-o {
   background-color: var(--color-o);
   border-width: var(--border-width);
+  border-radius: calc(var(--tile-size) / 4);
 }
+
+.type-x {
+  background: repeating-linear-gradient(
+    45deg,
+    #f69d3c,
+    #d7fffe 5%,
+    #ebf8e1 5%,
+    #f69d3c 10%
+    );
+    border-width: 0px;
+}
+
 .type-S {
   background-color: var(--color-S);
   border-width: var(--border-width);
@@ -42,29 +68,50 @@
   border-width: var(--border-width);
 }
 
+.App {
+  --grid-height: calc(var(--tile-size) * var(--rows));
+  /* border: 2px solid red; */
+  width: 350px;
+  margin: auto;
+  display: grid;
+  row-gap: var(--tile-size);
+  grid-template-rows: 100px var(--grid-height) 100px;
+  grid-template-areas: "header"
+                       "maze"
+                       "controls";
+}
+
+.App-header {
+  grid-area: header;
+}
+
 .grid-square {
   border-style: solid;
   width: var(--tile-size);
   height: var(--tile-size);
-  /* border-width: var(--border-width); */
   border-left-color: var(--border-left-color);
   border-top-color: var(--border-top-color);
   border-right-color: var(--border-right-color);
   border-bottom-color: var(--border-bottom-color);
 }
 
-* {
-  box-sizing: border-box;
-}
 
 .grid-board {
+  border: var(--tile-size) double black;
   display: grid;
   grid-template-columns: repeat(var(--cols), var(--tile-size));
   grid-gap: 0;
-  align-self: flex-start;
+  align-self: center;
+  grid-area: maze;
 }
 
-.score-board-button {
+.controls {
+  grid-area: controls;
+  padding-top:10px ;
+  justify-content: center;
+}
+
+.control-buttons {
   display: block;
   padding: 1em;
   border-width: 5px;

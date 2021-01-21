@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Controls from './Controls';
 import GridSquare from './GridSquare';
 const maps = require('../data/maps')
 
@@ -6,13 +7,13 @@ const Maze = (props) => {
 
     const [maze, setMaze] = useState([]);
     const [mazeIndex, setMazeIndex] = useState(0);
+    const numberOfGrids = maps.length
 
     useEffect(() => {
         let grid = maps[mazeIndex].rowStrings
-        console.log('grid initial', grid)
         const height = grid.length;
         const width = grid[0].length;
-        var r = document.querySelector(':root');
+        const r = document.querySelector(':root');
         r.style.setProperty('--cols', width);
         r.style.setProperty('--rows', height);
         const currentMaze = grid.map((rowArray, row) => {
@@ -25,19 +26,20 @@ const Maze = (props) => {
     }, [mazeIndex])
 
 
-
-    // for (let row = 0; row < height; row++) {
-    //     blankGrid.push([])
-    //     grid[row] = grid[row].split('')
-    //     for (let col = 0; col < width; col++) {
-    //         blankGrid[row].push(<GridSquare key={`${col}${row}`} color="1" />)
-    //     }
-    // }
-
     return (
-        <div className='grid-board'>
-            {maze}
-        </div>
+        <>
+            <header className="App-header">
+                <h1 className="App-title">{maps[mazeIndex].name}</h1>
+            </header>
+            <div className='grid-board'>
+                {maze}
+            </div>
+            <Controls
+                mazeIndex={mazeIndex}
+                setMazeIndex={setMazeIndex}
+                numberOfGrids={numberOfGrids}
+            />
+        </>
     );
 };
 

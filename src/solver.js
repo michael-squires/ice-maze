@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 function IceMazeSolver(map) {
     const grid = map.replace(/ /g, 's').split('\n');
     const height = grid.length;

@@ -1,14 +1,20 @@
 import React from 'react';
 
 const Controls = (props) => {
+
+    const incrementMazeIndex = () => {
+        const { setMazeIndex, mazeIndex, numberOfGrids } = props
+        setMazeIndex((mazeIndex + 1) % numberOfGrids)
+    }
+
+
     return (
-        <div>
-            <div>Score:0</div>
-            <div>Level: 1</div>
-            <button className="score-board-button" onClick={(e) => {
-            }}>Play</button>
-            <button className="score-board-button" onClick={(e) => {
-            }}>Restart</button>
+        <div className='controls'>
+            <button className="control-buttons" onClick={incrementMazeIndex} > Next Maze</button>
+            <button className="control-buttons" onClick={incrementMazeIndex} > Next Maze</button>
+            <button className="control-buttons" onClick={incrementMazeIndex} > Next Maze</button>
+            <button className="control-buttons" onClick={incrementMazeIndex} > Next Maze</button>
+            <button className="control-buttons" onClick={incrementMazeIndex} > Next Maze</button>
         </div>
     );
 };
