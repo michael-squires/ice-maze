@@ -6,28 +6,47 @@
   --border-right-color: rgba(0, 0, 0, 0.15);
   --border-bottom-color: rgba(0, 0, 0, 0.5);
 
-  --color-0: #000000;
-  --color-1: #d7fffe;
+  --color-o: #000000;
+  --color-s: #d7fffe;
+  --color-S: green;
+  --color-E: red;
+
+  --button-color-t: rgba(200, 200, 200, 1);
+  --button-color-r: rgba(150, 150, 150, 1);
+  --button-color-b: rgba(120, 120, 120, 1);
+  --button-color-l: rgba(222, 222, 222, 1);
 
   --cols:10;
   --rows:18;
-  --tile-size: calc(300px / var(--cols));
---border-width: 2px;
+  --tile-size: 30px;
+  /* calc(300px / var(Math.max(--cols,--rows))); */
+  --border-width: 3px;
 }
 
-.color-0 {
-  background-color: var(--color-0);
+.type-s {
+  background-color: var(--color-s);
+  border-width: 0px
 }
 
-.color-1 {
-  background-color: var(--color-1);
+.type-o {
+  background-color: var(--color-o);
+  border-width: var(--border-width);
+}
+.type-S {
+  background-color: var(--color-S);
+  border-width: var(--border-width);
+}
+
+.type-E {
+  background-color: var(--color-E);
+  border-width: var(--border-width);
 }
 
 .grid-square {
   border-style: solid;
   width: var(--tile-size);
   height: var(--tile-size);
-  border-width: var(--border-width);
+  /* border-width: var(--border-width); */
   border-left-color: var(--border-left-color);
   border-top-color: var(--border-top-color);
   border-right-color: var(--border-right-color);
@@ -43,4 +62,14 @@
   grid-template-columns: repeat(var(--cols), var(--tile-size));
   grid-gap: 0;
   align-self: flex-start;
+}
+
+.score-board-button {
+  display: block;
+  padding: 1em;
+  border-width: 5px;
+  border-top-color: var(--button-color-t);
+  border-left-color: var(--button-color-l);
+  border-right-color: var(--button-color-r);
+  border-bottom-color: var(--button-color-b);
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 
 const GridSquare = (props) => {
-    const classes = `grid-square color-${props.color}`
-    console.log('classes', classes)
+    const classes = `grid-square type-${props.type}`
+    console.log(classes)
     return (
         <div className={classes} />
     );
