@@ -7,7 +7,7 @@ const Maze = (props) => {
 
     const [height, setHeight] = useState(0)
     const [width, setWidth] = useState(0)
-    const [direction, setDirection] = useState(null)
+    //const [direction, setDirection] = useState(null)
     const [maze, setMaze] = useState([]);
     const [mazeIndex, setMazeIndex] = useState(0);
     const [grid, setGrid] = useState([])
@@ -21,29 +21,9 @@ const Maze = (props) => {
         return false
     }
 
-    console.log('direction', direction)
-
-
-    while (direction) {
-        let xd = moves[direction][0]
-        let yd = moves[direction][1];
-        console.log('while', direction, x, y, xd, yd)
-        let x1 = x + xd;
-        let y1 = y + yd;
-        if (outOfGrid(x1, y1)) continue
-        if (grid[x1][y1] === 'o') continue
-        while (grid[x1][y1] === 's') {
-            if (outOfGrid(x1 + xd, y1 + yd)) { break }
-            if (grid[x1 + xd][y1 + yd] === '#') { break }
-            setX(x1)
-            setY(y1)
-        }
-        setX(x1)
-        setY(y1)
-    }
 
     useEffect(() => {
-        setDirection(null)
+        //setDirection(null)
         let currentGrid = maps[mazeIndex].rowStrings
         currentGrid = currentGrid.map(rowString => rowString.split(''))
         setGrid(currentGrid)
@@ -72,7 +52,28 @@ const Maze = (props) => {
             })
         })
         setMaze(currentMaze)
-    }, [grid, mazeIndex])
+    }, [grid, mazeIndex, x, y])
+
+    const makeMove = (e) => {
+        const direction = e.target.value
+        console.log(direction)
+        let xd = moves[direction][0]
+        let yd = moves[direction][1];
+        console.log('while', direction, x, y, xd, yd)
+        let x1 = x + xd;
+        let y1 = y + yd;
+        if (outOfGrid(x1, y1)) return
+        if (grid[x1][y1] === 'o') return
+        while (grid[x1][y1] === 's') {
+            if (outOfGrid(x1 + xd, y1 + yd)) { break }
+            if (grid[x1 + xd][y1 + yd] === '#') { break }
+            setX(x1)
+            setY(y1)
+        }
+        setX(x1)
+        setY(y1)
+        return
+    }
 
     return (
         <>
@@ -83,6 +84,7 @@ const Maze = (props) => {
                 {maze}
             </div>
             <Controls
+                makeMove={makeMove}
                 setDirection={setDirection}
                 mazeIndex={mazeIndex}
                 setMazeIndex={setMazeIndex}
