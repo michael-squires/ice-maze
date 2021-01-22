@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Controls = (props) => {
-    const { setMazeIndex, mazeIndex, numberOfGrids, setDirection, makeMove } = props
+    const { setMazeIndex, mazeIndex, numberOfGrids, makeMove } = props
 
     const incrementMazeIndex = () => {
         setMazeIndex((mazeIndex + 1) % numberOfGrids)

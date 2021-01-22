@@ -101,6 +101,9 @@ html {
   border-top-color: var(--border-top-color);
   border-right-color: var(--border-right-color);
   border-bottom-color: var(--border-bottom-color);
+  font-size: 40px;
+  align-self: center;
+  justify-self: center;
 }
 
 
@@ -118,6 +121,8 @@ html {
   display: grid;
   grid-template-columns: repeat(var(--cols), var(--tile-size));
   grid-area: maze;
+  align-items: center;
+  justify-items: center;
 }
 
 .controls {
