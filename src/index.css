@@ -6,6 +6,7 @@ html {
 }
 
 :root {
+  width: 100%;
   --bg-color:rga(150,150,150,1);
 
   --border-left-color: rgba(255, 255, 255, 0.20);
@@ -26,13 +27,13 @@ html {
 
   --cols:6;
   --rows:18;
-  --tile-size: calc(360px / calc(var(--cols)+2));
+  --tile-size: calc(360px / calc(calc(var(--cols) + 2)));
   --border-width: 3px;
 }
 
 .type-s {
   background: repeating-linear-gradient(
-    45deg,
+    -45deg,
     #d7fffe,
     #d7fffe 5%,
     #d8e2e2 5%,
@@ -43,14 +44,14 @@ html {
 
 .type-o {
   background-color: var(--color-o);
-  border-width: var(--border-width);
+  border-width: calc(var(--tile-size) / 4);
   border-radius: calc(var(--tile-size) / 4);
 }
 
 .type-x {
   background: repeating-linear-gradient(
     45deg,
-    #f69d3c,
+    #d7fffe,
     #d7fffe 5%,
     #ebf8e1 5%,
     #f69d3c 10%
@@ -69,13 +70,13 @@ html {
 }
 
 .App {
-  --grid-height: calc(var(--tile-size) * var(--rows));
+  --grid-height: calc(var(--tile-size) * calc(calc(var(--rows) + 2)));
   /* border: 2px solid red; */
-  width: 350px;
+  width: 360px;
+  /* height: 640px; */
   margin: auto;
   display: grid;
-  row-gap: var(--tile-size);
-  grid-template-rows: 100px var(--grid-height) 100px;
+  grid-template-rows: 50px var(--grid-height) 50px;
   grid-template-areas: "header"
                        "maze"
                        "controls";
@@ -83,6 +84,13 @@ html {
 
 .App-header {
   grid-area: header;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(8px + 1vmin);
+  color: white;
 }
 
 .grid-square {
@@ -97,23 +105,30 @@ html {
 
 
 .grid-board {
+  background: repeating-linear-gradient(
+    -45deg,
+    #d7fffe,
+    #d7fffe 5%,
+    #d8e2e2 5%,
+    #9ecac9 10%
+  );
+  width:max-content;
+  height:max-content;
   border: var(--tile-size) double black;
   display: grid;
   grid-template-columns: repeat(var(--cols), var(--tile-size));
-  grid-gap: 0;
-  align-self: center;
   grid-area: maze;
 }
 
 .controls {
   grid-area: controls;
-  padding-top:10px ;
-  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
 }
 
 .control-buttons {
-  display: block;
-  padding: 1em;
+  width: 72px;
   border-width: 5px;
   border-top-color: var(--button-color-t);
   border-left-color: var(--button-color-l);

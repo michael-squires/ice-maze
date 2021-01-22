@@ -1,6 +1,5 @@
 /* eslint-disable no-sequences */
-function IceMazeSolver(map) {
-    const grid = map.replace(/ /g, 's').split('\n');
+function IceMazeSolver() {
     const height = grid.length;
     for (let i = 0; i < height; i++) { grid[i] = grid[i].split('') }
     const width = grid[0].length;
