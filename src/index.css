@@ -101,7 +101,7 @@ html {
   border-top-color: var(--border-top-color);
   border-right-color: var(--border-right-color);
   border-bottom-color: var(--border-bottom-color);
-  font-size: 40px;
+  font-size: calc(--var(--tile-size))px;
   align-self: center;
   justify-self: center;
 }
