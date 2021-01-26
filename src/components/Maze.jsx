@@ -38,11 +38,6 @@ const Maze = () => {
         // eslint-disable-next-line
     }, [mazeIndex, setGrid])
 
-    useEffect(() => {
-        const timer = setTimeout(() => console.log('timed out'), 3000)
-        return () => clearTimeout(timer)
-    }, [x, y])
-
     const makeMove = (e) => {
         const direction = e.target.value
         let xd = moves[direction][0]
@@ -59,7 +54,7 @@ const Maze = () => {
             if (grid[x1 + xd][y1 + yd] === '#') { break }
             x1 = x1 + xd;
             y1 = y1 + yd;
-            setTimeout(setX(x1), 1000)
+            setX(x1)
             setY(y1)
             console.log('slipping')
         }
@@ -78,7 +73,7 @@ const Maze = () => {
                     return rowArray.map((square, col) => {
                         const squareType = square === '#' ? 'o' : square === 'S' ? 's' : square
                         return x === row && y === col ?
-                            <GridSquare key={`${row}${col}`} symbol={'🤠'} type={squareType} />
+                            <GridSquare key={`${row}${col}`} symbol={'👹'} type={squareType} />
                             :
                             <GridSquare key={`${row}${col}`} type={squareType} />
                     })

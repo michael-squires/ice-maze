@@ -16,7 +16,7 @@ html {
 
   --color-o: #160f01;
   --color-s: #d7fffe;
-  --color-x: #d69214;
+  --color-x: brown;
   --color-S: green;
   --color-E: red;
 
@@ -32,13 +32,6 @@ html {
 }
 
 .type-s {
-  background: repeating-linear-gradient(
-    -45deg,
-    #d7fffe,
-    #d7fffe 5%,
-    #d8e2e2 5%,
-    #9ecac9 10%
-  );
   border-width: 0px;
 }
 
@@ -49,14 +42,8 @@ html {
 }
 
 .type-x {
-  background: repeating-linear-gradient(
-    45deg,
-    #d7fffe,
-    #d7fffe 5%,
-    #ebf8e1 5%,
-    #f69d3c 10%
-    );
-    border-width: 0px;
+  background-color: rgba(248, 95, 6, 0.6);
+  border-width: 0px;
 }
 
 .type-S {
@@ -65,8 +52,9 @@ html {
 }
 
 .type-E {
-  background-color: var(--color-E);
-  border-width: var(--border-width);
+  background: repeating-conic-gradient(white 0% 25%, transparent 0% 50%) 50% / calc(var(--tile-size)/2) calc(var(--tile-size)/2);
+  background-color: black;
+  border-width: 0px
 }
 
 .App {
@@ -101,7 +89,8 @@ html {
   border-top-color: var(--border-top-color);
   border-right-color: var(--border-right-color);
   border-bottom-color: var(--border-bottom-color);
-  font-size: calc(--var(--tile-size))px;
+  font-size: calc(var(--tile-size)*0.9);
+  /* calc(--var(--tile-size))px; */
   align-self: center;
   justify-self: center;
 }
@@ -111,9 +100,9 @@ html {
   background: repeating-linear-gradient(
     -45deg,
     #d7fffe,
-    #d7fffe 5%,
-    #d8e2e2 5%,
-    #9ecac9 10%
+    #d7fffe 2.5%,
+    #d8e2e2 2.5%,
+    #9ecac9 5%
   );
   width:max-content;
   height:max-content;
@@ -139,4 +128,19 @@ html {
   border-left-color: var(--button-color-l);
   border-right-color: var(--button-color-r);
   border-bottom-color: var(--button-color-b);
+}
+
+.message-popup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(var(--tile-size) * 10);
+  height: calc(var(--tile-size) * 10);
+  background-color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+.message-popup.hidden {
+  display: none;
 }
