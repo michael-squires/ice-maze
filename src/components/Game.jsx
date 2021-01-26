@@ -6,12 +6,15 @@ const maps = require('../data/maps')
 const Game = () => {
 
     const [gridIndex, setGridIndex] = useState(0);
-    const [grid, setGrid] = useState(maps[0].rowStrings
-        .map(rowString => rowString.split('')))
+    const [grid, setGrid] = useState([])
     const [x, setX] = useState(0)
     const [y, setY] = useState(0)
+
     const slipping = useRef(false)
     const direction = useRef(null)
+    const speed = useRef(200)
+    const mazeCompleted = useRef(false)
+
     const numberOfGrids = maps.length
     const moves = { 'u': [-1, 0], 'd': [+1, 0], 'l': [0, -1], 'r': [0, 1] }
     const outOfGrid = (x, y) => {
@@ -20,7 +23,6 @@ const Game = () => {
     }
 
     useEffect(() => {
-        console.log('USE EFFECT grid', grid)
         const newGrid = maps[gridIndex].rowStrings
             .map(rowString => rowString.split(''))
         const r = document.querySelector(':root');
@@ -34,7 +36,6 @@ const Game = () => {
             if (startIndex !== -1) {
                 setX(row)
                 setY(startIndex)
-                console.log('1st use effect x,y>>', x, y)
                 break
             }
         }
@@ -43,17 +44,17 @@ const Game = () => {
     }, [gridIndex, setGrid])
 
     useEffect(() => {
-        console.log('useEffect slipping.current', slipping.current)
         if (slipping.current) {
-            setTimeout(makeMove, 1000)
+            speed.current = speed.current / 2
+            setTimeout(makeMove, speed.current)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [x, y])
-
+    }, [x, y, slipping.current])
 
 
     const handleDirectionClick = (e) => {
         const dir = e.target.value
+        speed.current = 200
         if (!slipping.current) {
             direction.current = dir
             makeMove()
@@ -75,12 +76,16 @@ const Game = () => {
         else if (grid[x + xd][y + yd] === 'x') {
             slipping.current = false
         }
+        else if (grid[x + xd][y + yd] === 'E') {
+            slipping.current = false
+            mazeCompleted.current = true
+        }
         else {
             slipping.current = true
         }
         console.log('xd,yd after ifs', xd, yd)
-        setX(x => x + xd)
-        setY(y => y + yd)
+        setX(x + xd)
+        setY(y + yd)
         return
     }
 

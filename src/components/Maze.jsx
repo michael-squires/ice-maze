@@ -3,7 +3,6 @@ import GridSquare from './GridSquare';
 
 const Maze = (props) => {
     const { grid, x, y } = props
-    console.log('props', props)
     return (
         <div className='grid-board'>
             {grid.map((rowArray, row) => {
