@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Controls from './Controls';
+import Header from './Header';
 import Maze from './Maze'
 const maps = require('../data/maps')
 
@@ -54,6 +55,7 @@ const Game = () => {
 
     const handleDirectionClick = (e) => {
         const dir = e.target.value
+        console.log(dir)
         speed.current = 200
         if (!slipping.current) {
             direction.current = dir
@@ -64,10 +66,6 @@ const Game = () => {
     const makeMove = () => {
         let xd = moves[direction.current][0]
         let yd = moves[direction.current][1]
-        console.log('direction.current', direction.current)
-        console.log('x,y', x, y)
-        console.log('xd, yd', xd, yd)
-
         if (outOfGrid(x + xd, y + yd) || grid[x + xd][y + yd] === '#') {
             xd = 0
             yd = 0
@@ -83,7 +81,6 @@ const Game = () => {
         else {
             slipping.current = true
         }
-        console.log('xd,yd after ifs', xd, yd)
         setX(x + xd)
         setY(y + yd)
         return
@@ -91,9 +88,7 @@ const Game = () => {
 
     return (
         <>
-            <header className="App-header">
-                <h2 className="App-title">{maps[gridIndex].name}</h2>
-            </header>
+            <Header title={maps[gridIndex].name} />
             <Maze grid={grid} x={x} y={y} />
             <Controls
                 handleDirectionClick={handleDirectionClick}
