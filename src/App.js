@@ -1,12 +1,12 @@
 import './App.css';
-import Maze from './components/Maze';
+import Game from './components/Game';
 import Popup from './components/Popup';
 
 function App() {
   return (
     <div className="App">
-      <Maze />
-      <Popup />
+      <Game />
+      {/* <Popup /> */}
     </div >
   );
 }
