@@ -42,19 +42,24 @@ html {
 }
 
 .type-x {
-  background-color: rgba(248, 95, 6, 0.6);
+  background-image: repeating-linear-gradient(-45deg,
+  transparent 0 10%,
+   rgb(190, 229, 221) 10% 20%);
+  border-width: calc(var(--tile-size) / 4);
+  /* border-radius: calc(var(--tile-size) / 4); */
   border-width: 0px;
 }
 
-.type-S {
+/* .type-S {
   background-color: var(--color-S);
   border-width: var(--border-width);
-}
+} */
 
 .type-E {
   background: repeating-conic-gradient(white 0% 25%, transparent 0% 50%) 50% / calc(var(--tile-size)/2) calc(var(--tile-size)/2);
   background-color: black;
-  border-width: 0px
+  /* border-width: calc(var(--tile-size) / 4); */
+  border-radius: calc(var(--tile-size) / 4);
 }
 
 .App {
@@ -70,7 +75,8 @@ html {
 
 .App-header {
   grid-area: header;
-  background-image: url("/src/assets/ice.jpg");
+  /* border-image: url("/src/assets/ice.jpg"); */
+  background-image: url("/src/assets/ice2.jpg");
   background-size:cover;
   background-color: #282c34;
   display: flex;
@@ -90,7 +96,6 @@ html {
   border-right-color: var(--border-right-color);
   border-bottom-color: var(--border-bottom-color);
   font-size: calc(var(--tile-size)*0.9);
-  /* calc(--var(--tile-size))px; */
   align-self: center;
   justify-self: center;
   overflow:hidden;
@@ -104,24 +109,18 @@ img {
 
 .image-u{
   object-position: 0px calc(var(--tile-size) * -3);
-} 
+}
 .image-r{
   object-position: 0px calc(var(--tile-size) * -2);
-} 
+}
 .image-l{
   object-position: 0px calc(var(--tile-size) * -1);
-} 
+}
 
 .grid-board {
   background-image: url("/src/assets/ice2.jpg");
   background-size:cover;
-  /* background: repeating-linear-gradient(
-    -45deg,
-    #d7fffe,
-    #d7fffe 2.5%,
-    #d8e2e2 2.5%,
-    #9ecac9 5%
-  ); */
+  border-image: url("/src/assets/ice.jpg");
   width:max-content;
   height:max-content;
   border: var(--tile-size) double whitesmoke;
@@ -140,6 +139,7 @@ img {
 }
 
 .control-buttons {
+  font-size: x-large;
   width: 72px;
   border-width: 5px;
   border-top-color: var(--button-color-t);
