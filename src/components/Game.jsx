@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import Controls from './Controls';
 import Header from './Header';
 import Maze from './Maze'
+import Popup from './Popup';
 const maps = require('../data/maps')
 
 const Game = () => {
@@ -10,6 +11,8 @@ const Game = () => {
     const [grid, setGrid] = useState([])
     const [x, setX] = useState(0)
     const [y, setY] = useState(0)
+    const [route, SetRoute] = useState([])
+
 
     const slipping = useRef(false)
     const direction = useRef(null)
@@ -18,12 +21,11 @@ const Game = () => {
 
     const numberOfGrids = maps.length
     const moves = { 'u': [-1, 0], 'd': [+1, 0], 'l': [0, -1], 'r': [0, 1] }
-    const outOfGrid = (x, y) => {
-        if (x < 0 || x > (grid.length - 1) || y < 0 || y > (grid[0].length - 1)) { return true }
-        return false
-    }
+    const outOfGrid = (x, y) => (x < 0 || x > (grid.length - 1) || y < 0 || y > (grid[0].length - 1))
+
 
     useEffect(() => {
+        mazeCompleted.current = false
         const newGrid = maps[gridIndex].rowStrings
             .map(rowString => rowString.split(''))
         const r = document.querySelector(':root');
@@ -56,6 +58,8 @@ const Game = () => {
     const handleDirectionClick = (e) => {
         const dir = e.target.value
         console.log(dir)
+        console.log(route)
+        SetRoute(prevRoute => prevRoute.concat(dir))
         speed.current = 200
         if (!slipping.current) {
             direction.current = dir
@@ -96,6 +100,9 @@ const Game = () => {
                 setGridIndex={setGridIndex}
                 numberOfGrids={numberOfGrids}
             />
+            <Popup
+                mazeCompleted={mazeCompleted.current}
+                route={route} />
         </>
     );
 };

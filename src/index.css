@@ -131,12 +131,13 @@ html {
 }
 
 .message-popup {
-  position: absolute;
+  grid-area: maze;
+  /* position: absolute;
   left: 50%;
-  top: 50%;
+  top: 30%;
   transform: translate(-50%, -50%);
   width: calc(var(--tile-size) * 10);
-  height: calc(var(--tile-size) * 10);
+  height: calc(var(--tile-size) * 8); */
   background-color: rgba(255, 255, 255, 0.5);
   text-align: center;
 }
