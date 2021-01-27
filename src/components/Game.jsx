@@ -15,7 +15,7 @@ const Game = () => {
 
 
     const slipping = useRef(false)
-    const direction = useRef(null)
+    const direction = useRef('u')
     const speed = useRef(200)
     const mazeCompleted = useRef(false)
 
@@ -26,6 +26,7 @@ const Game = () => {
 
     useEffect(() => {
         mazeCompleted.current = false
+        SetRoute([])
         const newGrid = maps[gridIndex].rowStrings
             .map(rowString => rowString.split(''))
         const r = document.querySelector(':root');
@@ -93,7 +94,11 @@ const Game = () => {
     return (
         <>
             <Header title={maps[gridIndex].name} />
-            <Maze grid={grid} x={x} y={y} />
+            <Maze
+                grid={grid}
+                x={x}
+                y={y}
+                dir={direction.current} />
             <Controls
                 handleDirectionClick={handleDirectionClick}
                 gridIndex={gridIndex}

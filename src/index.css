@@ -15,10 +15,10 @@ html {
   --border-bottom-color: rgba(0, 0, 0, 0.5);
 
   --color-o: #160f01;
-  --color-s: #d7fffe;
+  /* --color-s: #d7fffe;
   --color-x: brown;
   --color-S: green;
-  --color-E: red;
+  --color-E: red; */
 
   --button-color-t: rgba(200, 200, 200, 1);
   --button-color-r: rgba(150, 150, 150, 1);
@@ -93,8 +93,24 @@ html {
   /* calc(--var(--tile-size))px; */
   align-self: center;
   justify-self: center;
+  overflow:hidden;
 }
 
+img {
+  width:calc(var(--tile-size)*3);
+  height:calc(var(--tile-size)*4);
+  object-position: 0px 0px;
+}
+
+.image-u{
+  object-position: 0px calc(var(--tile-size) * -3);
+} 
+.image-r{
+  object-position: 0px calc(var(--tile-size) * -2);
+} 
+.image-l{
+  object-position: 0px calc(var(--tile-size) * -1);
+} 
 
 .grid-board {
   background: repeating-linear-gradient(
