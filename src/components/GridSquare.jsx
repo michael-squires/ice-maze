@@ -8,7 +8,7 @@ const GridSquare = (props) => {
         (dir) ?
             <div className={classes}>
                 <img className={`image-${dir}`}
-                    src="/images/e1.png" alt="ghost"
+                    src="/images/m2.png" alt="ghost"
                 />
                 <p>{dir}</p>
             </div>

@@ -3,7 +3,7 @@ import Controls from './Controls';
 import Header from './Header';
 import Maze from './Maze'
 import Popup from './Popup';
-const maps = require('../data/maps')
+const maps = require('../assets/maps')
 
 const Game = () => {
 
@@ -15,7 +15,7 @@ const Game = () => {
 
 
     const slipping = useRef(false)
-    const direction = useRef('u')
+    const direction = useRef('d')
     const speed = useRef(200)
     const mazeCompleted = useRef(false)
 
