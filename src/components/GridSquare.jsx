@@ -1,14 +1,15 @@
 import React from 'react';
 
-const GridSquare = (props) => {
-    const { dir } = props || ''
-    const classes = `grid-square type-${props.type}`
-    console.log(`image-${dir}`)
+const GridSquare = ({ dir, index, type }) => {
+    const classes = `grid-square type-${type}`
+    const sprites = ['f1', 'm1', 'f2', 'm2', 'f3', 'e1']
+    const sprite = sprites[index] || 'e1'
+
     return (
         (dir) ?
             <div className={classes}>
                 <img className={`image-${dir}`}
-                    src="/images/m2.png" alt="ghost"
+                    src={`/images/${sprite}.png`} alt="sprite"
                 />
                 <p>{dir}</p>
             </div>

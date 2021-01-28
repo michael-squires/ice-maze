@@ -1,10 +1,8 @@
 import React from 'react';
 
-const Popup = (props) => {
-    const { mazeCompleted, route } = props
+const Popup = ({ mazeCompleted, route, shortest }) => {
     let message = mazeCompleted ? 'You solved the Maze!' : ''
     let isHidden = mazeCompleted ? '' : 'hidden'
-
 
     return (
         <div className={`message-popup ${isHidden}`}>
@@ -12,16 +10,10 @@ const Popup = (props) => {
             <p>Your route:</p>
             <h1>{route}</h1>
             <p>You made {route.length} moves</p>
-            {route.length <= 6 ?
-                <>
-                    <p>That's the least moves possible!</p>
-                    <h1>🏅</h1>
-                </>
+            {route.length <= shortest ?
+                <p>That's the least moves possible!</p>
                 :
-                <>
-                    <p>It can be solved with less moves!</p>
-                    <p>Try again? or View Solution?</p>
-                </>
+                <p>It can be solved in {shortest} moves...</p>
             }
         </div>
     );

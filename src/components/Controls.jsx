@@ -14,8 +14,6 @@ const Controls = (props) => {
             <button className="control-buttons" value='d' onClick={handleDirectionClick}>🔽</button>
             <button className="control-buttons" value='r' onClick={handleDirectionClick}>▶️</button>
             <button className="control-buttons" onClick={resetMaze}>↩️</button>
-            <button className="control-buttons word-buttons" >solve</button>
-            <button className="control-buttons word-buttons" >random</button>
             <button className="control-buttons" onClick={incrementGridIndex} >⏭</button>
         </div>
     );

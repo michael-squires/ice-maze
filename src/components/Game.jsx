@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import Controls from './Controls';
 import Header from './Header';
 import Maze from './Maze'
 import Popup from './Popup';
-const maps = require('../assets/maps')
+const puzzleData = require('../assets/puzzleData')
 
 const Game = () => {
 
@@ -13,22 +13,43 @@ const Game = () => {
     const [y, setY] = useState(0)
     const [route, SetRoute] = useState([])
 
-
     const slipping = useRef(false)
     const direction = useRef('d')
     const speed = useRef(200)
     const mazeCompleted = useRef(false)
     const startCoordinates = useRef([])
+    const numberOfGrids = puzzleData.length
 
-    const numberOfGrids = maps.length
-    const moves = { 'u': [-1, 0], 'd': [+1, 0], 'l': [0, -1], 'r': [0, 1] }
-    const outOfGrid = (x, y) => (x < 0 || x > (grid.length - 1) || y < 0 || y > (grid[0].length - 1))
+    const makeMove = useCallback(() => {
+        const moves = { 'u': [-1, 0], 'd': [+1, 0], 'l': [0, -1], 'r': [0, 1] }
+        const outOfGrid = (x, y) => (x < 0 || x > (grid.length - 1) || y < 0 || y > (grid[0].length - 1))
+        let xd = moves[direction.current][0]
+        let yd = moves[direction.current][1]
+        if (outOfGrid(x + xd, y + yd) || grid[x + xd][y + yd] === '#') {
+            xd = 0
+            yd = 0
+            slipping.current = false
+        }
+        else if (grid[x + xd][y + yd] === 'x') {
+            slipping.current = false
+        }
+        else if (grid[x + xd][y + yd] === 'E') {
+            slipping.current = false
+            mazeCompleted.current = true
+        }
+        else {
+            slipping.current = true
+        }
+        setX(x => x + xd)
+        setY(y => y + yd)
+        return
+    }, [x, y, grid])
 
 
     useEffect(() => {
         mazeCompleted.current = false
         SetRoute([])
-        const newGrid = maps[gridIndex].rowStrings
+        const newGrid = puzzleData[gridIndex].rowStrings
             .map(rowString => rowString.split(''))
         const r = document.querySelector(':root');
         const height = newGrid.length
@@ -47,17 +68,15 @@ const Game = () => {
             }
         }
         setGrid(newGrid)
-        // eslint-disable-next-line
     }, [gridIndex, setGrid])
 
     useEffect(() => {
+        console.log('useEffect 2')
         if (slipping.current) {
             speed.current = speed.current / 2
             setTimeout(makeMove, speed.current)
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [x, y, slipping.current])
-
+    }, [x, y, setX, setY, makeMove])
 
     const handleDirectionClick = (e) => {
         const dir = e.target.value
@@ -75,40 +94,20 @@ const Game = () => {
         SetRoute([])
         setX(startCoordinates.current[0])
         setY(startCoordinates.current[1])
+        direction.current = 'd'
         mazeCompleted.current = false
-    }
-
-    const makeMove = () => {
-        let xd = moves[direction.current][0]
-        let yd = moves[direction.current][1]
-        if (outOfGrid(x + xd, y + yd) || grid[x + xd][y + yd] === '#') {
-            xd = 0
-            yd = 0
-            slipping.current = false
-        }
-        else if (grid[x + xd][y + yd] === 'x') {
-            slipping.current = false
-        }
-        else if (grid[x + xd][y + yd] === 'E') {
-            slipping.current = false
-            mazeCompleted.current = true
-        }
-        else {
-            slipping.current = true
-        }
-        setX(x + xd)
-        setY(y + yd)
-        return
     }
 
     return (
         <>
-            <Header title={maps[gridIndex].name} />
+            <Header title={puzzleData[gridIndex].name} />
             <Maze
                 grid={grid}
                 x={x}
                 y={y}
-                dir={direction.current} />
+                dir={direction.current}
+                index={gridIndex}
+            />
             <Controls
                 handleDirectionClick={handleDirectionClick}
                 gridIndex={gridIndex}
@@ -118,7 +117,9 @@ const Game = () => {
             />
             <Popup
                 mazeCompleted={mazeCompleted.current}
-                route={route} />
+                route={route}
+                shortest={puzzleData[gridIndex].optimalRoute.length}
+            />
         </>
     );
 };

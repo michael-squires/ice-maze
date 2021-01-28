@@ -7,32 +7,27 @@ module.exports = [
     {
         name: 'One-way route',
         rowStrings: ['s#ssss', 'xsssEs', 'ssssss', 'sssssS', 'ssssss', 's#ssss'],
-        optimalRoute: ''
+        optimalRoute: 'lur'
     },
     {
         name: 'Which route has the least moves?',
         rowStrings: ['E#sss#', 'ssssss', '#sssss', 'ss#sss', 's#ssss', 'sSssss'],
-        optimalMoves: 4
+        optimalRoute: 'rulu'
     },
     {
-        name: 'Pokemon Gold, that one Ice Path puzzle',
+        name: 'Undertale, ice tic-tac-toe puzzle',
         rowStrings:
             [
-                'ssssssss#sssss',
-                'sss#ssssssssss',
-                'sssssssss#ssss',
-                's#ssssssssssss',
-                '#sssssss#sssss',
-                'sssssssssssss#',
-                'ssssss#sssssss',
-                'ss#ssssssssssE',
-                'sssssssssssss#',
-                'sssssss#ssssss',
-                'sssss#sss#ssss',
-                'ssssssssssssss',
-                '#############S'
+                'xsssssssxs#',
+                'xsxsssxsss#',
+                '#sssssssss#',
+                'ss#sxsssssE',
+                'ssxsxsssss#',
+                'ssxsssxsss#',
+                'ssssssssss#',
+                'Ssssssssxs#'
             ],
-        optimalMoves: 
+        optimalRoute: 'ruldrrdlurur'
     },
     {
         name: 'Pokemon Gold, Mahogany Town Gym',
@@ -54,21 +49,28 @@ module.exports = [
                 's#x#xx###s',
                 'xsxxxxxxsx',
                 '#sxxSxxxs#'
-            ]
+            ],
+        optimalRoute: 'uuuulurdlur'
     },
     {
-        name: 'Undertale, ice tic-tac-toe puzzle',
+        name: 'Pokemon Gold, that one Ice Path puzzle',
         rowStrings:
             [
-                'xsssssssxs#',
-                'xsxsssxsss#',
-                '#sssssssss#',
-                'ss#sxsssssE',
-                'ssxsxsssss#',
-                'ssxsssxsss#',
-                'ssssssssss#',
-                'Ssssssssxs#'
-            ]
+                'ssssssss#sssss',
+                'sss#ssssssssss',
+                'sssssssss#ssss',
+                's#ssssssssssss',
+                '#sssssss#sssss',
+                'sssssssssssss#',
+                'ssssss#sssssss',
+                'ss#ssssssssssE',
+                'sssssssssssss#',
+                'sssssss#ssssss',
+                'sssss#sss#ssss',
+                'ssssssssssssss',
+                '#############S'
+            ],
+        optimalRoute: 'ulururdluldrdrur'
     },
     {
         name: 'Orbox B, Level 5',
@@ -90,6 +92,7 @@ module.exports = [
             'sssssss#ssssssss',
             'sss#ssssssssssss',
             'sssssssss#ssssss',
-            'ssssssssssssssss']
+            'ssssssssssssssss'],
+        optimalRoute: 'dlulurdldrdrurdldlu'
     },
 ]
