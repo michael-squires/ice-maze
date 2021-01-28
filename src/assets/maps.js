@@ -1,19 +1,18 @@
 module.exports = [
     {
         name: 'A simple spiral',
-        rowStrings: ['ssssxs', 'ss#sss', 'sssEss', 's#ssss', 'ssss#s', 'Sssss#']
+        rowStrings: ['ssssxs', 'ss#sss', 'sssEss', 's#ssss', 'ssss#s', 'Sssss#'],
+        optimalRoute: 'urdlur'
     },
     {
-        name: 'Ice puzzle has one-way routes',
-        rowStrings: ['s#ssss', 'xsssEs', 'ssssss', 'sssssS', 'ssssss', 's#ssss']
+        name: 'One-way route',
+        rowStrings: ['s#ssss', 'xsssEs', 'ssssss', 'sssssS', 'ssssss', 's#ssss'],
+        optimalRoute: ''
     },
     {
         name: 'Which route has the least moves?',
-        rowStrings: ['E#sss#', 'ssssss', '#sssss', 'ss#sss', 's#ssss', 'sSssss']
-    },
-    {
-        name: 'Which route is the shortest?',
-        rowStrings: ['ssssEs', 'sssss#', 'ssssss', '#s#sss', 'ssss#s', 's#ssSs']
+        rowStrings: ['E#sss#', 'ssssss', '#sssss', 'ss#sss', 's#ssss', 'sSssss'],
+        optimalMoves: 4
     },
     {
         name: 'Pokemon Gold, that one Ice Path puzzle',
@@ -32,7 +31,8 @@ module.exports = [
                 'sssss#sss#ssss',
                 'ssssssssssssss',
                 '#############S'
-            ]
+            ],
+        optimalMoves: 
     },
     {
         name: 'Pokemon Gold, Mahogany Town Gym',

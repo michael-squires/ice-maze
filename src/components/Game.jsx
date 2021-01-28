@@ -18,6 +18,7 @@ const Game = () => {
     const direction = useRef('d')
     const speed = useRef(200)
     const mazeCompleted = useRef(false)
+    const startCoordinates = useRef([])
 
     const numberOfGrids = maps.length
     const moves = { 'u': [-1, 0], 'd': [+1, 0], 'l': [0, -1], 'r': [0, 1] }
@@ -38,9 +39,11 @@ const Game = () => {
         for (let row = 0; row < newGrid.length; row++) {
             startIndex = newGrid[row].indexOf('S')
             if (startIndex !== -1) {
+                startCoordinates.current = [row, startIndex]
                 setX(row)
                 setY(startIndex)
                 break
+
             }
         }
         setGrid(newGrid)
@@ -66,6 +69,13 @@ const Game = () => {
             direction.current = dir
             makeMove()
         }
+    }
+
+    const resetMaze = () => {
+        SetRoute([])
+        setX(startCoordinates.current[0])
+        setY(startCoordinates.current[1])
+        mazeCompleted.current = false
     }
 
     const makeMove = () => {
@@ -104,6 +114,7 @@ const Game = () => {
                 gridIndex={gridIndex}
                 setGridIndex={setGridIndex}
                 numberOfGrids={numberOfGrids}
+                resetMaze={resetMaze}
             />
             <Popup
                 mazeCompleted={mazeCompleted.current}

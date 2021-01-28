@@ -42,18 +42,15 @@ html {
 }
 
 .type-x {
-  background-image: repeating-linear-gradient(-45deg,
+  /* background-image: repeating-linear-gradient(-45deg,
   transparent 0 10%,
-   rgb(190, 229, 221) 10% 20%);
+   rgb(190, 229, 221) 10% 20%); */
+   background: repeating-conic-gradient(rgba(199, 236, 216, 0.582) 0% 25%, transparent 0% 50%) 50% / calc(var(--tile-size)/4) calc(var(--tile-size)/4);
+   /* background-color: rgb(212, 241, 234); */
   border-width: calc(var(--tile-size) / 4);
   /* border-radius: calc(var(--tile-size) / 4); */
   border-width: 0px;
 }
-
-/* .type-S {
-  background-color: var(--color-S);
-  border-width: var(--border-width);
-} */
 
 .type-E {
   background: repeating-conic-gradient(white 0% 25%, transparent 0% 50%) 50% / calc(var(--tile-size)/2) calc(var(--tile-size)/2);
@@ -133,6 +130,7 @@ img {
 
 .controls {
   grid-area: controls;
+  flex-wrap: wrap;
   display: flex;
   flex-direction: row;
   /* justify-content: center; */
@@ -140,7 +138,8 @@ img {
 
 .control-buttons {
   font-size: x-large;
-  width: 72px;
+  color:white;
+  width: 90px;
   border-width: 5px;
   border-top-color: var(--button-color-t);
   border-left-color: var(--button-color-l);
@@ -148,12 +147,16 @@ img {
   border-bottom-color: var(--button-color-b);
 }
 
+.word-buttons{
+  font-size: large;
+  background-color:#6d89a1;
+  color: white;
+}
+
 .message-popup {
   grid-area: maze;
-  background-image: url("/src/assets/labyrinth.jpg");
-  background-size: cover;
   color:white;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgb(110 139 165 / 80%);
   text-align: center;
 }
 
