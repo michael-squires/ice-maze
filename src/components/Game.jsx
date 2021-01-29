@@ -71,17 +71,14 @@ const Game = () => {
     }, [gridIndex, setGrid])
 
     useEffect(() => {
-        console.log('useEffect 2')
         if (slipping.current) {
-            speed.current = speed.current / 2
+            speed.current = speed.current * 0.75
             setTimeout(makeMove, speed.current)
         }
     }, [x, y, setX, setY, makeMove])
 
     const handleDirectionClick = (e) => {
         const dir = e.target.value
-        console.log(dir)
-        console.log(route)
         SetRoute(prevRoute => prevRoute.concat(dir))
         speed.current = 200
         if (!slipping.current) {

@@ -2,7 +2,7 @@ import React from 'react';
 
 const GridSquare = ({ dir, index, type }) => {
     const classes = `grid-square type-${type}`
-    const sprites = ['f1', 'm1', 'f2', 'm2', 'f3', 'e1']
+    const sprites = ['f1', 'm1', 'f2', 'm2', 'f3', 'm3', 'f4']
     const sprite = sprites[index] || 'e1'
 
     return (

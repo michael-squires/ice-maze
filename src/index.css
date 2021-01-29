@@ -14,7 +14,6 @@ html {
   --border-right-color: rgba(0, 0, 0, 0.15);
   --border-bottom-color: rgba(0, 0, 0, 0.5);
 
-
   --button-color-t: rgba(200, 200, 200, 1);
   --button-color-r: rgba(150, 150, 150, 1);
   --button-color-b: rgba(120, 120, 120, 1);
@@ -26,9 +25,9 @@ html {
   --border-width: 3px;
 }
 
-.type-s {
+/* .type-s {
   border-width: 0px;
-}
+} */
 
 .type-o {
   background-color: white;
@@ -37,20 +36,14 @@ html {
 }
 
 .type-x {
-  /* background-image: repeating-linear-gradient(-45deg,
-  transparent 0 10%,
-   rgb(190, 229, 221) 10% 20%); */
    background: repeating-conic-gradient(rgba(199, 236, 216, 0.582) 0% 25%, transparent 0% 50%) 50% / calc(var(--tile-size)/4) calc(var(--tile-size)/4);
-   /* background-color: rgb(212, 241, 234); */
   border-width: calc(var(--tile-size) / 4);
-  /* border-radius: calc(var(--tile-size) / 4); */
   border-width: 0px;
 }
 
 .type-E {
   background: repeating-conic-gradient(white 0% 25%, transparent 0% 50%) 50% / calc(var(--tile-size)/2) calc(var(--tile-size)/2);
   background-color: black;
-  /* border-width: calc(var(--tile-size) / 4); */
   border-radius: calc(var(--tile-size) / 4);
 }
 
@@ -111,7 +104,6 @@ img {
 .grid-board {
   background-image: url("/src/assets/ice2.jpg");
   background-size:cover;
-  border-image: url("/src/assets/ice.jpg");
   width:max-content;
   height:max-content;
   border: var(--tile-size) double whitesmoke;

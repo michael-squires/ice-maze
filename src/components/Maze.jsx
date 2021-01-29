@@ -2,7 +2,6 @@ import React from 'react';
 import GridSquare from './GridSquare';
 
 const Maze = ({ grid, x, y, dir, index }) => {
-    console.log('dir in Maze', dir)
     return (
         <div className='grid-board'>
             {grid.map((rowArray, row) => {
