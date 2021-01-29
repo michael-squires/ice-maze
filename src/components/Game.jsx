@@ -3,7 +3,7 @@ import Controls from './Controls';
 import Header from './Header';
 import Maze from './Maze'
 import Popup from './Popup';
-const puzzleData = require('../assets/puzzleData')
+const puzzleData = require('../assets/data/puzzleData')
 
 const Game = () => {
 

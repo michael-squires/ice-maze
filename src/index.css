@@ -25,9 +25,9 @@ html {
   --border-width: 3px;
 }
 
-/* .type-s {
-  border-width: 0px;
-} */
+.type-s {
+  border-width: 1px;
+}
 
 .type-o {
   background-color: white;
@@ -47,7 +47,7 @@ html {
   border-radius: calc(var(--tile-size) / 4);
 }
 
-.App {
+.Game {
   --grid-height: calc(var(--tile-size) * calc(calc(var(--rows) + 2)));
   width: 360px;
   margin: auto;
@@ -60,7 +60,7 @@ html {
 
 .App-header {
   grid-area: header;
-  background-image: url("/src/assets/ice2.jpg");
+  background-image: url("/src/assets/images/ice2.jpg");
   background-size:cover;
   background-color: #282c34;
   display: flex;
@@ -102,7 +102,7 @@ img {
 }
 
 .grid-board {
-  background-image: url("/src/assets/ice2.jpg");
+  background-image: url("/src/assets/images/ice2.jpg");
   background-size:cover;
   width:max-content;
   height:max-content;
