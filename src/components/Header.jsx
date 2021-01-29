@@ -1,12 +1,21 @@
 import React from 'react';
 
 const Header = (props) => {
-    const { title } = props
+    const { title, resetMaze, setGridIndex, gridIndex, numberOfGrids } = props
+
+    const incrementGridIndex = () => {
+        setGridIndex((gridIndex + 1) % numberOfGrids)
+    }
+
     return (
         <header className="App-header">
-            <h2 className="App-title">{title}</h2>
-        </header>
+            <button className="control-buttons" onClick={resetMaze}>↩️</button>
+            <div className="App-title">{title}</div>
+            <button className="control-buttons" onClick={incrementGridIndex} >⏭</button>
+
+        </header >
     );
 };
+
 
 export default Header;

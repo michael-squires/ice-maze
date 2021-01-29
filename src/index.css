@@ -1,12 +1,12 @@
 html {
   box-sizing: border-box;
+  width: 360px;
 }
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
 :root {
-  width: 100%;
   --bg-color:rga(150,150,150,1);
 
   --border-left-color: rgba(255, 255, 255, 0.20);
@@ -44,7 +44,7 @@ html {
 .type-E {
   background: repeating-conic-gradient(white 0% 25%, transparent 0% 50%) 50% / calc(var(--tile-size)/2) calc(var(--tile-size)/2);
   background-color: black;
-  border-radius: calc(var(--tile-size) / 4);
+  /* border-radius: calc(var(--tile-size) / 4); */
 }
 
 .Game {
@@ -52,7 +52,7 @@ html {
   width: 360px;
   margin: auto;
   display: grid;
-  grid-template-rows: 50px var(--grid-height) 100px;
+  grid-template-rows: 50px var(--grid-height) 50px;
   grid-template-areas: "header"
                        "maze"
                        "controls";
@@ -60,16 +60,24 @@ html {
 
 .App-header {
   grid-area: header;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
   background-image: url("/src/assets/images/ice2.jpg");
   background-position: 20%;
   background-size: 100%;
   background-color: #282c34;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: calc(6px + 1vmin);
   color: white;
+}
+
+.App-title {
+  width: 180px;
+  font-size: medium;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 .grid-square {
@@ -116,9 +124,6 @@ img {
 }
 
 .controls {
-  background-image: url("/src/assets/images/ice2.jpg");
-  background-position: bottom;
-  background-size: 100%;
   grid-area: controls;
   flex-wrap: wrap;
   display: flex;
@@ -136,6 +141,7 @@ img {
   border-right-color: var(--button-color-r);
   border-bottom-color: var(--button-color-b);
 }
+
 
 .message-popup {
   grid-area: maze;

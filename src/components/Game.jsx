@@ -97,7 +97,13 @@ const Game = () => {
 
     return (
         <>
-            <Header title={puzzleData[gridIndex].name} />
+            <Header
+                title={puzzleData[gridIndex].name}
+                resetMaze={resetMaze}
+                gridIndex={gridIndex}
+                setGridIndex={setGridIndex}
+                numberOfGrids={numberOfGrids}
+            />
             <Maze
                 grid={grid}
                 x={x}
@@ -107,10 +113,6 @@ const Game = () => {
             />
             <Controls
                 handleDirectionClick={handleDirectionClick}
-                gridIndex={gridIndex}
-                setGridIndex={setGridIndex}
-                numberOfGrids={numberOfGrids}
-                resetMaze={resetMaze}
             />
             <Popup
                 mazeCompleted={mazeCompleted.current}
