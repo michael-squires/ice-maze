@@ -1,11 +1,6 @@
 import React from 'react';
 
-const Header = (props) => {
-    const { title, resetMaze, setGridIndex, gridIndex, numberOfGrids } = props
-
-    const incrementGridIndex = () => {
-        setGridIndex((gridIndex + 1) % numberOfGrids)
-    }
+const Header = ({ title, resetMaze, incrementGridIndex }) => {
 
     return (
         <header className="App-header">

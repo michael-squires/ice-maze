@@ -72,7 +72,7 @@ const Game = () => {
 
     useEffect(() => {
         if (slipping.current) {
-            speed.current = speed.current * 0.75
+            speed.current = speed.current * 0.8
             setTimeout(makeMove, speed.current)
         }
     }, [x, y, setX, setY, makeMove])
@@ -85,6 +85,10 @@ const Game = () => {
             direction.current = dir
             makeMove()
         }
+    }
+
+    const incrementGridIndex = () => {
+        setGridIndex((gridIndex + 1) % numberOfGrids)
     }
 
     const resetMaze = () => {
@@ -100,9 +104,7 @@ const Game = () => {
             <Header
                 title={puzzleData[gridIndex].name}
                 resetMaze={resetMaze}
-                gridIndex={gridIndex}
-                setGridIndex={setGridIndex}
-                numberOfGrids={numberOfGrids}
+                incrementGridIndex={incrementGridIndex}
             />
             <Maze
                 grid={grid}
@@ -115,6 +117,8 @@ const Game = () => {
                 handleDirectionClick={handleDirectionClick}
             />
             <Popup
+                incrementGridIndex={incrementGridIndex}
+                resetMaze={resetMaze}
                 mazeCompleted={mazeCompleted.current}
                 route={route}
                 shortest={puzzleData[gridIndex].optimalRoute.length}

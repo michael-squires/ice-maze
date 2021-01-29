@@ -1,21 +1,21 @@
 module.exports = [
     {
-        name: 'A simple spiral',
-        rowStrings: ['ssssxs', 'ss#sss', 'sssEss', 's#ssss', 'ssss#s', 'Sssss#'],
-        optimalRoute: 'urdlur'
-    },
-    {
-        name: 'One-way route',
+        name: '1. Reach the checkered square. White squares are sticky!',
         rowStrings: ['s#ssss', 'xsssEs', 'ssssss', 'sssssS', 'ssssss', 's#ssss'],
         optimalRoute: 'lur'
     },
     {
-        name: 'Which route has the least moves?',
+        name: '2. Try to make the least number of moves possible!',
+        rowStrings: ['ssssxs', 'ss#sss', 'sssEss', 's#ssss', 'ssss#s', 'Sssss#'],
+        optimalRoute: 'urdlur'
+    },
+    {
+        name: '3. Easy to solve but which route has the least moves?',
         rowStrings: ['E#sss#', 'ssssss', '#sssss', 'ss#sss', 's#ssss', 'sSssss'],
         optimalRoute: 'rulu'
     },
     {
-        name: 'Undertale, ice tic-tac-toe puzzle',
+        name: '4. Undertale, ice tic-tac-toe puzzle',
         rowStrings:
             [
                 'xsssssssxs#',
@@ -30,7 +30,7 @@ module.exports = [
         optimalRoute: 'ruldrrdlurur'
     },
     {
-        name: 'Pokemon Gold, Mahogany Town Gym',
+        name: '5. Pokemon Gold, Mahogany Town Gym',
         rowStrings:
             [
                 'xsssssxs#s',
@@ -53,7 +53,7 @@ module.exports = [
         optimalRoute: 'uuuulurdlur'
     },
     {
-        name: 'Pokemon Gold, that one Ice Path puzzle',
+        name: '6. Pokemon Gold, that one Ice Path puzzle',
         rowStrings:
             [
                 'ssssssss#sssss',
@@ -73,7 +73,7 @@ module.exports = [
         optimalRoute: 'ulururdluldrdrur'
     },
     {
-        name: 'Orbox B, Level 5',
+        name: '7. Orbox B, Level 5',
         rowStrings: ['ssssssssssssssss',
             'ss#sssssssssssss',
             'ssssssss#sssssss',

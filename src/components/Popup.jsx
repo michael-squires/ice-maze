@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Popup = ({ mazeCompleted, route, shortest }) => {
-    let message = mazeCompleted ? 'You solved the Maze!' : ''
+const Popup = ({ mazeCompleted, route, shortest, incrementGridIndex, resetMaze }) => {
+    let message = mazeCompleted ? 'You Solved The Maze!' : ''
     let isHidden = mazeCompleted ? '' : 'hidden'
 
     return (
@@ -11,9 +11,18 @@ const Popup = ({ mazeCompleted, route, shortest }) => {
             <h1>{route}</h1>
             <p>You made {route.length} moves</p>
             {route.length <= shortest ?
-                <p>That's the least moves possible!</p>
+                <>
+                    <p>That's the least moves possible!</p>
+                    <p>Move to next maze?</p>
+                    <button className="pop-up-buttons" onClick={incrementGridIndex} >⏭</button>
+                </>
                 :
-                <p>It can be solved in {shortest} moves...</p>
+                <>
+                    <p>It can be solved in {shortest} moves...</p>
+                    <p>Try again?</p>
+                    <button className="pop-up-buttons" onClick={resetMaze} >↩️</button>
+
+                </>
             }
         </div>
     );

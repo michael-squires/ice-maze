@@ -26,7 +26,7 @@ html {
 }
 
 .type-s {
-  border-width: 1px;
+  border-width:1px;
 }
 
 .type-o {
@@ -36,7 +36,7 @@ html {
 }
 
 .type-x {
-   background: repeating-conic-gradient(rgba(199, 236, 216, 0.582) 0% 25%, transparent 0% 50%) 50% / calc(var(--tile-size)/4) calc(var(--tile-size)/4);
+  background: radial-gradient(#FAFAFA 35%, transparent);
   border-width: calc(var(--tile-size) / 4);
   border-width: 0px;
 }
@@ -44,7 +44,6 @@ html {
 .type-E {
   background: repeating-conic-gradient(white 0% 25%, transparent 0% 50%) 50% / calc(var(--tile-size)/2) calc(var(--tile-size)/2);
   background-color: black;
-  /* border-radius: calc(var(--tile-size) / 4); */
 }
 
 .Game {
@@ -52,7 +51,7 @@ html {
   width: 360px;
   margin: auto;
   display: grid;
-  grid-template-rows: 50px var(--grid-height) 50px;
+  grid-template-rows: 44px var(--grid-height) 50px;
   grid-template-areas: "header"
                        "maze"
                        "controls";
@@ -63,18 +62,18 @@ html {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  background-image: url("/src/assets/images/ice2.jpg");
+  background-image: url("/src/assets/images/ice3.jpg");
   background-position: 20%;
   background-size: 100%;
   background-color: #282c34;
+  text-align: center;
   align-items: center;
-  font-size: calc(6px + 1vmin);
   color: white;
 }
 
 .App-title {
   width: 180px;
-  font-size: medium;
+  font-size: 14px;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -111,7 +110,7 @@ img {
 }
 
 .grid-board {
-  background-image: url("/src/assets/images/ice2.jpg");
+  background-image: url("/src/assets/images/ice3.jpg");
   background-size:cover;
   width:max-content;
   height:max-content;
@@ -132,6 +131,7 @@ img {
 }
 
 .control-buttons {
+  background-color:#a2b9eb;
   font-size: x-large;
   color:white;
   width: 90px;
@@ -140,6 +140,14 @@ img {
   border-left-color: var(--button-color-l);
   border-right-color: var(--button-color-r);
   border-bottom-color: var(--button-color-b);
+}
+
+.pop-up-buttons{
+  width:fit-content;
+  background: none;
+  align-self: center;
+  border: none;
+  font-size: x-large;
 }
 
 
@@ -152,6 +160,8 @@ img {
   background-color: rgb(110 139 165 / 80%);
   text-align: center;
 }
+
+p{margin:0}
 
 .message-popup.hidden {
   display: none;
