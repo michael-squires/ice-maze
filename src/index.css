@@ -52,7 +52,7 @@ html {
   width: 360px;
   margin: auto;
   display: grid;
-  grid-template-rows: 50px var(--grid-height) 50px;
+  grid-template-rows: 50px var(--grid-height) 100px;
   grid-template-areas: "header"
                        "maze"
                        "controls";
@@ -61,7 +61,8 @@ html {
 .App-header {
   grid-area: header;
   background-image: url("/src/assets/images/ice2.jpg");
-  background-size:cover;
+  background-position: 20%;
+  background-size: 100%;
   background-color: #282c34;
   display: flex;
   flex-direction: column;
@@ -115,6 +116,9 @@ img {
 }
 
 .controls {
+  background-image: url("/src/assets/images/ice2.jpg");
+  background-position: bottom;
+  background-size: 100%;
   grid-area: controls;
   flex-wrap: wrap;
   display: flex;
